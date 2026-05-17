@@ -207,6 +207,10 @@ pnpm format       # oxfmt (.oxfmtrc.json: singleQuote + sortImports 有効、書
 pnpm format:check # oxfmt --check (差分があれば非ゼロ exit、CI 用)
 ```
 
+## Git hooks (Lefthook)
+
+`pnpm install` 時に [Lefthook](https://lefthook.dev/) が `prepare` script から自動セットアップされ、`pre-commit` でステージ済みファイルに対して `oxlint` と `oxfmt --check` を並列実行します。lint / format に違反があると commit はブロックされます (test は走らせず、commit を軽く保つ方針)。一時的に hook をスキップしたい場合は `LEFTHOOK=0 git commit ...` を使ってください。
+
 ## CI
 
 GitHub Actions (`.github/workflows/ci.yml`) が `main` への push / PR ごとに `pnpm build` (型チェック) → `pnpm lint` → `pnpm format:check` → `pnpm test:run` を実行します。

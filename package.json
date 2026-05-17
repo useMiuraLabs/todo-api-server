@@ -8,6 +8,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "prepare": "lefthook install",
     "setup": "bash scripts/setup.sh",
     "setup:docker": "bash scripts/setup-docker.sh",
     "dev": "tsx watch --env-file=.env src/bin/serve.ts",
@@ -42,6 +43,7 @@
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.8.0",
     "drizzle-kit": "^0.31.10",
+    "lefthook": "^2.1.6",
     "oxfmt": "^0.50.0",
     "oxlint": "^1.65.0",
     "typescript": "^6.0.3",
