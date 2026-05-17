@@ -1,0 +1,16 @@
+node_modules
+dist
+data
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+coverage
+.vitest-cache
+.oxlintcache
+tests
+README.md
+CLAUDE.md
