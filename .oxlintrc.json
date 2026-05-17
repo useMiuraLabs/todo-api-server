@@ -1,0 +1,12 @@
+{
+  "plugins": ["typescript", "oxc", "unicorn"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "rules": {
+    "no-await-in-loop": "off"
+  },
+  "ignorePatterns": ["dist/", "drizzle/", "data/"]
+}

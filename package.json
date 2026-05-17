@@ -1,0 +1,56 @@
+{
+  "name": "todo-api-server",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "setup:docker": "bash scripts/setup-docker.sh",
+    "dev": "tsx watch --env-file=.env src/bin/serve.ts",
+    "build": "tsc --noEmit",
+    "start": "tsx --env-file=.env src/bin/serve.ts",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "oxlint",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx --env-file=.env src/db/migrate.ts",
+    "db:seed": "tsx --env-file=.env src/db/seed.ts",
+    "db:seed:user": "tsx --env-file=.env src/db/seed-user.ts",
+    "db:seed:todos": "tsx --env-file=.env src/db/seed-todos.ts",
+    "db:reset": "rm -f data/app.db && pnpm db:migrate && pnpm db:seed",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.0.2",
+    "@hono/swagger-ui": "^0.6.1",
+    "@hono/zod-openapi": "^1.4.0",
+    "better-auth": "^1.6.11",
+    "better-sqlite3": "^12.10.0",
+    "drizzle-orm": "^0.45.2",
+    "drizzle-zod": "^0.8.3",
+    "hono": "^4.12.19",
+    "tsx": "^4.22.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.8.0",
+    "drizzle-kit": "^0.31.10",
+    "oxfmt": "^0.50.0",
+    "oxlint": "^1.65.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
+  }
+}
