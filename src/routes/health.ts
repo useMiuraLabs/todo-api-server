@@ -8,7 +8,6 @@ export const health = new Hono().get('/', (c) => {
   try {
     db.run(sql`SELECT 1`);
     dbOk = true;
-  } catch {
-  }
+  } catch {}
   return c.json({ status: dbOk ? 'ok' : 'degraded', db: dbOk ? 'ok' : 'error' });
 });
