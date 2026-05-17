@@ -1,0 +1,18 @@
+# Lefthook 設定
+# 公式: https://lefthook.dev/configuration/
+#
+# 方針:
+# - pre-commit は lint と format チェックのみ (test は走らせない、commit を重くしない)
+# - glob にマッチする staged files が無ければ自動で skip される (公式仕様)
+# - lint と format は独立して走るので parallel: true で並列実行
+# - 無効化したい場合は `LEFTHOOK=0 git commit` (公式仕様)
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: '*.{ts,tsx,js,jsx,mjs,cjs}'
+      run: pnpm oxlint {staged_files}
+    format:
+      glob: '*.{ts,tsx,js,jsx,mjs,cjs,json,md,yml,yaml}'
+      run: pnpm oxfmt --check {staged_files}
