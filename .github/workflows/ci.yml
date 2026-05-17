@@ -4,15 +4,23 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  ci:
+  check:
+    name: ${{ matrix.task.name }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task:
+          - { name: build, cmd: pnpm build }
+          - { name: lint, cmd: pnpm lint }
+          - { name: format, cmd: pnpm format:check }
+          - { name: test, cmd: pnpm test:run }
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +35,4 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
-      - run: pnpm lint
-      - run: pnpm format:check
-      - run: pnpm test:run
+      - run: ${{ matrix.task.cmd }}
