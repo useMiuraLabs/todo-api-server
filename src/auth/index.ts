@@ -1,6 +1,6 @@
 import { betterAuth, type BetterAuthOptions } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { bearer, jwt } from 'better-auth/plugins';
+import { bearer, jwt, openAPI } from 'better-auth/plugins';
 
 import { db } from '../db/client';
 import { env } from '../env';
@@ -28,7 +28,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  plugins: [jwt(), bearer()],
+  plugins: [jwt(), bearer(), openAPI()],
   ...(Object.keys(socialProviders).length > 0 ? { socialProviders } : {}),
 });
 

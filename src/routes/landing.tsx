@@ -77,7 +77,11 @@ const Landing: FC<LandingProps> = ({ uptimeSeconds, dbOk }) => {
             — Swagger UI (対話的に試せる)
           </li>
           <li>
-            <a href="/openapi.json">/openapi.json</a> — OpenAPI スキーマ
+            <a href="/openapi.json">/openapi.json</a> — OpenAPI スキーマ (自前ルート)
+          </li>
+          <li>
+            <a href="/api/auth/reference">/api/auth/reference</a> — Better Auth 認証 API
+            リファレンス
           </li>
           <li>
             <a href="/health">/health</a> — ヘルスチェック (JSON)
