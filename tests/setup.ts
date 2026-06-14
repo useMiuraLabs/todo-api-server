@@ -17,7 +17,7 @@ process.env.DATABASE_URL = `file:${TEST_DB_PATH}`;
 process.env.BETTER_AUTH_SECRET =
   process.env.BETTER_AUTH_SECRET ?? 'test-secret-test-secret-test-secret-1234';
 process.env.BETTER_AUTH_URL = process.env.BETTER_AUTH_URL ?? 'http://localhost:8931';
-process.env.CORS_ORIGIN = '*';
+process.env.CORS_ORIGIN = process.env.CORS_ORIGIN ?? 'http://localhost:8931';
 process.env.PORT = process.env.PORT ?? '8931';
 
 const { migrate } = await import('drizzle-orm/better-sqlite3/migrator');
