@@ -7,8 +7,8 @@ const EnvSchema = z.object({
     message:
       'BETTER_AUTH_SECRET must be at least 32 characters. Generate with: openssl rand -base64 32',
   }),
-  BETTER_AUTH_URL: z.string().url().default('http://localhost:8931'),
-  CORS_ORIGIN: z.string().default('*'),
+  BETTER_AUTH_URL: z.url().default('http://localhost:8931'),
+  CORS_ORIGIN: z.url('フロントのURL入れて'),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
   GITHUB_CLIENT_ID: z.string().optional(),

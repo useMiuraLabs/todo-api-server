@@ -28,6 +28,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  trustedOrigins: [env.CORS_ORIGIN],
   plugins: [jwt(), bearer(), openAPI()],
   ...(Object.keys(socialProviders).length > 0 ? { socialProviders } : {}),
 });

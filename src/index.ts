@@ -45,9 +45,8 @@ const app = $(
     .use(
       '*',
       cors({
-        origin: env.CORS_ORIGIN === '*' ? '*' : env.CORS_ORIGIN.split(',').map((o) => o.trim()),
-        // CORS で credentials は wildcard origin と両立不可。
-        credentials: env.CORS_ORIGIN !== '*',
+        origin: env.CORS_ORIGIN,
+        credentials: true,
       }),
     )
     .use('*', authMiddleware)
